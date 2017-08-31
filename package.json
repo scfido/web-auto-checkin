@@ -1,0 +1,22 @@
+{
+  "name": "web-auto-checkin",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha test/.setup.js test/*.test.js --reporter mochawesome --reporter-options autoOpen=true,quiet=true"
+  },
+  "keywords": [
+    "testing",
+    "Mocha"
+  ],
+  "author": "Xie Jian",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "encodeurl": "^1.0.1",
+    "selenium-webdriver": "^3.4.0"
+  }
+}
