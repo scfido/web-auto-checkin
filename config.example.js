@@ -2,10 +2,10 @@
 module.exports = {
 
     /**登陆用户*/
-    username: "scfido@gmail.com",
+    username: "yourname@gmail.com",
 
     /**
-     * 正确的密码
+     * 登陆密码
      */
     password: "123abc"
 }

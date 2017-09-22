@@ -26,3 +26,16 @@ npm install
 ```sh
 npm start
 ```
+
+# 自定签到
+我们可以使用系统的crontab定时自定执行签到脚本。例如每天8：30自动签到。
+```sh
+# 编辑定时任务
+crontab -e
+
+# 输入以下内容，签到脚本路径要根据你的文件位置修改
+30 8 * * * /web-auto-checkin/check.sh
+
+# 保存以后可以查询计划任务列表
+crontab -l
+```
