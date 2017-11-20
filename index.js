@@ -6,13 +6,26 @@ const config = require("./config");
 let driver = new webdriver.Builder()
     .forBrowser("chrome")
     .build();
-driver.get("https://stormss.top/auth/login");
-driver.wait(until.elementLocated(By.id("login")), 10000);
-driver.findElement(By.id("email")).sendKeys(config.username);
-driver.findElement(By.id("passwd")).sendKeys(config.password);
-driver.findElement(By.id("login")).click();
-driver.wait(until.titleIs("风暴SS"), 10000);
-driver.findElement(By.id("checkin")).click();
-driver.sleep(5000);
+
+// checkinStormSS();
+// driver.sleep(5000);
+config.sites.forEach(site => {
+    if(!site.disabled)
+        checkin(site)
+    driver.sleep(5000);
+});
 
 driver.quit();
+
+function checkin(site) {
+    driver.get(site.loginUrl);
+    driver.wait(until.elementLocated(By.id("login")), 10000);
+    driver.findElement(By.id("email")).sendKeys(site.username);
+    driver.findElement(By.id("passwd")).sendKeys(site.password);
+    driver.findElement(By.id("login")).click();
+    driver.wait(until.titleIs(site.title), 10000);
+
+    let checkinButton = driver.findElement(By.id("checkin"));
+    if (checkinButton.getText() == "签到")
+        checkinButton.click();
+}
