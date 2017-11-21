@@ -10,7 +10,7 @@ let driver = new webdriver.Builder()
 // checkinStormSS();
 // driver.sleep(5000);
 config.sites.forEach(site => {
-    if(!site.disabled)
+    if (!site.disabled)
         checkin(site)
     driver.sleep(5000);
 });
@@ -26,6 +26,9 @@ function checkin(site) {
     driver.wait(until.titleIs(site.title), 10000);
 
     let checkinButton = driver.findElement(By.id("checkin"));
-    if (checkinButton.getText() == "签到")
-        checkinButton.click();
+    checkinButton.getText()
+        .then(text => {
+            if (text == "点击签到")
+                checkinButton.click();
+        })
 }
